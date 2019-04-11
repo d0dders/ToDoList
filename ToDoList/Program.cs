@@ -11,24 +11,21 @@ namespace ToDoList
     {
         static void Main(string[] args)
         {
-            List<ToDo> toDoList = new List<ToDo>();
+            //List<ToDo> toDoList = new List<ToDo>();
+            ToDoList toDoList = new ToDoList();
 
             while (true)
             {
-                AddToDo(toDoList);
+                Console.WriteLine("Enter a task description:");
+                string description = Console.ReadLine();
+                Console.WriteLine("Enter a due date:");
+                DateTime dueDate = DateTime.Parse(Console.ReadLine());
+                toDoList.AddToDo(description, dueDate);
 
-                Console.WriteLine($"There are {toDoList.Count} To Do's on your list");
+                Console.WriteLine($"There are {toDoList.Count()} To Do's on your list");
             }
         }
 
-        private static void AddToDo(List<ToDo> toDoList)
-        {
-            Console.WriteLine("Enter a task description:");
-            string description = Console.ReadLine();
-            Console.WriteLine("Enter a due date:");
-            DateTime dueDate = DateTime.Parse(Console.ReadLine());
-            ToDo toDo = new ToDo(description, dueDate);
-            toDoList.Add(toDo);
-        }
+        
     }
 }
