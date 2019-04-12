@@ -20,5 +20,18 @@ namespace ToDoList
         {
             return toDoList.Count;
         }
+
+        public void Delete(int index)
+        {
+            toDoList.RemoveAt(index - 1);
+        }
+
+        public void PrintList()
+        {
+            for (int i = 0; i < toDoList.Count; i++)
+            {
+                Console.WriteLine($"{i+1}. {String.Format("{0:d}", toDoList[i].DueDate)} - {toDoList[i].Description}");
+            }
+        }
     }
 }
