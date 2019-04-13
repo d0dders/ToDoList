@@ -11,7 +11,6 @@ namespace ToDoList
     {
         static void Main(string[] args)
         {
-            //List<ToDo> toDoList = new List<ToDo>();
             ToDoList toDoList = new ToDoList();
 
             while (true)
@@ -35,7 +34,10 @@ namespace ToDoList
                         Console.WriteLine("Enter a task description:");
                         string description = Console.ReadLine();
                         Console.WriteLine("Enter a due date:");
-                        DateTime dueDate = DateTime.Parse(Console.ReadLine());
+                        if (!DateTime.TryParse(Console.ReadLine(), out DateTime dueDate))
+                        {
+                            dueDate = DateTime.Today;
+                        }
                         toDoList.AddToDo(description, dueDate);
                         break;
                     case "2":
