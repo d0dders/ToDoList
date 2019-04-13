@@ -9,6 +9,7 @@ namespace ToDoList
     class ToDoList
     {
         private List<ToDo> toDoList = new List<ToDo>();
+        private List<ToDo> completedList = new List<ToDo>();
 
         public void AddToDo(string description, DateTime dueDate)
         {
@@ -16,13 +17,25 @@ namespace ToDoList
             toDoList.Add(toDo);
         }
 
-        public int Count()
+        public int ToDoCount()
         {
             return toDoList.Count;
         }
 
+        public int DoneCount()
+        {
+            return completedList.Count;
+        }
+
         public void Delete(int index)
         {
+            toDoList.RemoveAt(index - 1);
+        }
+
+        public void MarkComplete(int index)
+        {
+            toDoList[index - 1].state = ToDo.State.Completed;
+            completedList.Add(toDoList[index - 1]);
             toDoList.RemoveAt(index - 1);
         }
 

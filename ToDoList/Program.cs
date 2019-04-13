@@ -17,13 +17,14 @@ namespace ToDoList
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine($"There are {toDoList.Count()} To Do's on your list");
+                Console.WriteLine($"There are {toDoList.ToDoCount()} To-Do's on your list. You have completed {toDoList.DoneCount()} To-Do's");
                 toDoList.PrintList();
                 Console.WriteLine();
 
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. Add a new to-do");
-                Console.WriteLine("2. Delete a new to-do");
+                Console.WriteLine("2. Complete a to-do");
+                Console.WriteLine("3. Delete a to-do");
                 string input = (Console.ReadLine());
 
                 switch (input)
@@ -36,10 +37,17 @@ namespace ToDoList
                         toDoList.AddToDo(description, dueDate);
                         break;
                     case "2":
-                        Console.WriteLine("Enter the number of the To-Do you want to delete:");
+                        Console.WriteLine("Great job! Enter the number of the To-Do you completed:");
                         if (int.TryParse(Console.ReadLine(), out int index))
                         {
-                            toDoList.Delete(index);
+                            toDoList.MarkComplete(index);
+                        }
+                        break;
+                    case "3":
+                        Console.WriteLine("Enter the number of the To-Do you want to delete:");
+                        if (int.TryParse(Console.ReadLine(), out int index2))
+                        {
+                            toDoList.Delete(index2);
                         }
                         
                         break;

@@ -13,8 +13,6 @@ namespace ToDoList
         {
             [Description("Not started")]
             Incomplete,
-            [Description("In-progress")]
-            InProgress,
             [Description("Completed")]
             Completed
 
@@ -23,12 +21,13 @@ namespace ToDoList
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime CompletedDate { get; set; }
+        public State state;
 
         public ToDo(string description, DateTime dueDate)
         {
             Description = description;
             DueDate = dueDate;
-            State state = State.Incomplete;
+            state = State.Incomplete;
         }
     }
 }
