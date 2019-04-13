@@ -35,15 +35,24 @@ namespace ToDoList
         public void MarkComplete(int index)
         {
             toDoList[index - 1].state = ToDo.State.Completed;
+            toDoList[index - 1].CompletedDate = DateTime.Now;
             completedList.Add(toDoList[index - 1]);
             toDoList.RemoveAt(index - 1);
         }
 
-        public void PrintList()
+        public void PrintToDos()
         {
             for (int i = 0; i < toDoList.Count; i++)
             {
                 Console.WriteLine($"{i+1}. {String.Format("{0:d}", toDoList[i].DueDate)} - {toDoList[i].Description}");
+            }
+        }
+
+        public void PrintCompleted()
+        {
+            for (int i = 0; i < completedList.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {String.Format("{0:d}", completedList[i].CompletedDate)} - {completedList[i].Description}");
             }
         }
     }
