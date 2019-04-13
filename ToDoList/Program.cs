@@ -26,9 +26,10 @@ namespace ToDoList
                 Console.WriteLine("2. Complete a to-do");
                 Console.WriteLine("3. Show completed to-do's");
                 Console.WriteLine("4. Delete a to-do");
+                Console.WriteLine("Q. Quit");
                 string input = (Console.ReadLine());
 
-                switch (input)
+                switch (input.ToUpper())
                 {
                     case "1":
                         Console.WriteLine("Enter a task description:");
@@ -58,8 +59,9 @@ namespace ToDoList
                         {
                             toDoList.Delete(index2);
                         }
-                        
                         break;
+                    case "Q":
+                        return;
                     default:
                         break;
                 }
